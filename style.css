@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&family=VT323&display=swap');
+
+
+* { 
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    font-family: 'VT323', monospace;
+}
+
+html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Game container */
+#game{
+    position: relative;
+    width: 1051px;
+    height: 384px;
+    border: 1px solid black;
+}
+
+.ground {
+    position: absolute;
+    bottom: 0;
+    background-image: url(assets/images/ground.png);
+    background-repeat: repeat-x;
+    image-rendering: pixelated;
+    width: 2399px;
+    height: 24px;
+}
+
+.dino {
+    position: absolute;
+    bottom: 0;
+    left: 1%;
+    background-image: url(assets/images/dino/dino_initial.png);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    width: 88px;
+    height: 94px;
+}
+
+.cactus {
+    position: absolute;
+    bottom: 0;
+    left: 2000px;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+.cactus-small-1{
+    background-image: url(assets/images/cacti/cacti_small_1.png);
+    height: 70px;
+    width: 34px;
+}
+
+.cactus-small-2{
+    background-image: url(assets/images/cacti/cacti_small_2.png);
+    height: 70px;
+    width: 68px;
+}
+
+.cactus-small-3{
+    background-image: url(assets/images/cacti/cacti_small_3.png);
+    height: 70px;
+    width: 102px;
+}
