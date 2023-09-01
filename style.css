@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&family=VT323&display=swap');
 
+:root{
+    --game-speed:5000; /* In MS*/
+    --jump-speed:600; /* In ms */
+    --max-jump:250;
+    --speed-scale: 1;
+}
 
 * { 
     margin: 0;
@@ -13,6 +19,7 @@ html{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 /* Game container */
@@ -21,6 +28,7 @@ html{
     width: 1051px;
     height: 384px;
     border: 1px solid black;
+    overflow: hidden;
 }
 
 .ground {
@@ -29,8 +37,18 @@ html{
     background-image: url(assets/images/ground.png);
     background-repeat: repeat-x;
     image-rendering: pixelated;
-    width: 2399px;
+    width: 7197px;
     height: 24px;
+    animation: ground-animation calc(var(--game-speed) * 1ms) linear infinite;
+}
+
+@keyframes ground-animation {
+    0%{
+        left: 0;
+    }
+    100%{
+        left: -2399px;
+    }
 }
 
 .dino {
@@ -42,8 +60,24 @@ html{
     image-rendering: pixelated;
     width: 88px;
     height: 94px;
+    animation: dino-jump-animation calc(var(--jump-speed) * 1ms) linear infinite;
 }
 
+@keyframes dino-jump-animation{
+    0%{
+        transform: translate3d(0,0,0);
+        animation-timing-function: cubic-bezier(0.33333, 0.66667, 0.66667, 1)
+    }
+
+    50%{
+        transform: translate3d(0,-250%,0);
+        animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)
+    }
+
+    100%{
+        transform: translate3d(0,0,0);
+    }
+}
 .cactus {
     position: absolute;
     bottom: 0;
