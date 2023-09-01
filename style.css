@@ -31,6 +31,43 @@ html{
     overflow: hidden;
 }
 
+.score{
+    position: absolute;
+    right: 0;
+    font-size: xxx-large;
+    color: #535353;
+}
+.messages{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    font-size: xx-large;
+    color: #535353;
+}
+
+.messages p{
+    display: none;
+}
+/* Before game start */
+
+.messages p:first-child{
+    display: block
+}
+
+/* After game start */
+
+.game-started .messages p:first-child {
+    display: none;
+}
+
+/* Game over */
+
+.game-over .messages p:last-child{
+    display: block;
+}
+
 .ground {
     position: absolute;
     bottom: 0;
@@ -39,9 +76,16 @@ html{
     image-rendering: pixelated;
     width: 7197px;
     height: 24px;
+
+}
+
+.game-started .ground{
     animation: ground-animation calc(var(--game-speed) * 1ms) linear infinite;
 }
 
+.game-over .ground{
+    animation-play-state: paused;
+}
 @keyframes ground-animation {
     0%{
         left: 0;
@@ -60,7 +104,7 @@ html{
     image-rendering: pixelated;
     width: 88px;
     height: 94px;
-    animation: dino-jump-animation calc(var(--jump-speed) * 1ms) linear infinite;
+    /* animation: dino-jump-animation calc(var(--jump-speed) * 1ms) linear infinite; */
 }
 
 @keyframes dino-jump-animation{
@@ -70,7 +114,7 @@ html{
     }
 
     50%{
-        transform: translate3d(0,-250%,0);
+        transform: translate3d(0,calc(var(--max-jump) * -1%),0);
         animation-timing-function: cubic-bezier(0.33333, 0, 0.66667, 0.33333)
     }
 
